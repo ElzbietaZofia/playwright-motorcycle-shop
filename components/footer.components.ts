@@ -1,4 +1,4 @@
-import { Page } from "@playwright/test";
+import { Page, expect, Locator } from "@playwright/test";
 
 export class FooterComponent {
     constructor(private page: Page) { }
@@ -15,9 +15,33 @@ export class FooterComponent {
     termsList = this.page.getByRole('link', { name: 'Terms & Conditions' })
     ordersList = this.page.getByRole('link', { name: 'My orders' })
 
+    warrantyList = this.page.getByRole('link', { name: 'Warranty' })
+    productsFAQList = this.page.getByRole('link', { name: 'FAQ - Products' })
+    cleaningList = this.page.getByRole('link', { name: 'Cleaning & Treatment' })
+    technologyList = this.page.locator('#menu-footer-menu').getByRole('link', { name: 'Technology & Materials' })
+    docsList = this.page.getByRole('link', { name: 'Conformity Docs' })
+    customList = this.page.getByRole('link', { name: 'Custom Works' })
+
+    async clickOnLabel(labelName) {
+        switch (labelName) {
+            case 'Warranty List':
+                await this.warrantyList.click()
+                break
+            case 'Product FAQ':
+                await this.productsFAQList.click()
+                break
+            case 'Cleaning List':
+                await this.cleaningList.click()
+                break
+            case 'Technology List':
+                await this.technologyList.click()
+                break
+            
+        }
+    }
+
+
 }
-
-
 
 
 

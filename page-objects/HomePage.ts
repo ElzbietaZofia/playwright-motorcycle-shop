@@ -111,7 +111,24 @@ export class HomePage {
         await expect(this.page).toHaveURL('https://www.dainese.com/on/demandware.store/Sites-Dainese_ROW-Site/en_PL/Login-Show?rurl=1')
     }
 
+    async assertFooterWarranty() {
+        await expect(this.page).toHaveURL('https://warranty.dainese.com/registration')
+    }
+
+    async assertFooterProductFAQ() {
+        await expect(this.page).toHaveURL('https://www.dainese.com/pl/en/product-faq.html')
+    }
+
+    async assertFooterCleaning() {
+        await expect(this.page).toHaveURL('https://www.dainese.com/pl/en/product-faq.html?section=garment-cleaning')
+    }
+
+    async assertFooterTechnology() {
+        await expect(this.page).toHaveURL('https://www.dainese.com/pl/en/technologies/')
+    }
+
 }
+
 
 
 

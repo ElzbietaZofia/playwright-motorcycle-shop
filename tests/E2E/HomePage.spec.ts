@@ -1,7 +1,7 @@
-
 import { test, expect } from '@playwright/test'
 import { LoginPage } from '../../page-objects/LoginPage'
 import { HomePage } from '../../page-objects/HomePage'
+import { FooterComponent } from '../../components/footer.components'
 
 test.describe("Home page main menu", () => {
 	let loginPage: LoginPage
@@ -34,7 +34,43 @@ test.describe("Home page main menu", () => {
 
 })
 
-test.describe("Footer tests", () => {
+test.describe("Footer PRODUCTS test", () => {
+	let loginPage: LoginPage
+	let homePage: HomePage
+	let footerComponent: FooterComponent
+
+	test.beforeEach(async ({ page }) => {
+		loginPage = new LoginPage(page)
+		homePage = new HomePage(page)
+		footerComponent = new FooterComponent(page)
+
+		await homePage.visit()
+	})
+
+	test('Open Footer Warranty List', async ({ page }) => {
+		footerComponent.clickOnLabel('Waranty List')
+		await homePage.assertFooterWarranty()
+	})
+
+	test('Open Footer Products FAQ', async ({ page }) => {
+		footerComponent.clickOnLabel('Product FAQ')
+		await homePage.assertFooterProductFAQ()
+	})
+
+	test('Open Footer Cleaning List', async ({ page }) => {
+		footerComponent.clickOnLabel('Cleaning List')
+		await homePage.assertFooterCleaning()
+	})
+
+	test('Open Footer Technology List', async ({ page }) => {
+		footerComponent.clickOnLabel('Technology List')
+		await homePage.assertFooterTechnology()
+	})
+
+
+})
+
+test.describe("Footer HELP tests", () => {
 	let loginPage: LoginPage
 	let homePage: HomePage
 
